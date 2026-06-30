@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smruti Naik — Technical Project Manager</title>
+<style>
+  :root{
+    --navy:#1e2a3a;
+    --navy-soft:#475467;
+    --cream:#fdfbf7;
+    --cream-2:#fff8f1;
+    --orange:#c1714a;
+    --orange-soft:#f3e3d6;
+    --teal:#5b8a86;
+    --teal-soft:#e1efed;
+    --line:#e7e1d6;
+    --gold:#d99a3d;
+    --sans:"Inter",-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--cream);color:var(--navy);font-family:var(--sans);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{
+    border-bottom:2px solid var(--navy);
+    background:#fff;
+    position:sticky;top:0;z-index:10;
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1140px;margin:0 auto;}
+  .logo{font-weight:800;font-size:20px;}
+  .logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:30px;font-size:13.5px;font-weight:600;letter-spacing:.03em;color:var(--navy-soft);}
+  .nav-links a:hover{color:var(--orange);}
+  .nav-links a.active{color:var(--orange);}
+  .hire-btn{background:var(--navy);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;}
+  @media (max-width:880px){.nav-links{display:none;}}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;text-align:center;position:relative;overflow:hidden;}
+  .badge{
+    display:inline-block;background:var(--orange-soft);color:var(--orange);
+    font-size:13px;font-weight:600;padding:8px 18px;border-radius:999px;margin-bottom:28px;
+  }
+  .hero h1{font-size:clamp(40px,6vw,64px);font-weight:800;margin:0 0 6px;letter-spacing:-0.01em;}
+  .hero h1 .accent{color:var(--orange);}
+  .hero .role{font-size:24px;color:var(--navy-soft);margin:18px 0 6px;}
+  .hero .focus{font-size:16px;color:#8b8478;margin-bottom:22px;}
+  .hero .years{font-size:15px;color:var(--navy-soft);margin-bottom:36px;}
+  .hero .years b{font-size:30px;color:var(--navy);font-weight:800;margin-right:6px;}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;}
+  .btn-primary{background:var(--orange);color:#fff;padding:14px 26px;border-radius:8px;font-weight:700;font-size:15px;}
+  .btn-secondary{background:#fff;border:1.5px solid var(--line);color:var(--navy);padding:14px 26px;border-radius:8px;font-weight:700;font-size:15px;}
+
+  section{padding:70px 0;border-bottom:1px solid var(--line);}
+  .eyebrow{text-align:center;color:var(--orange);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
+  .sec-title{text-align:center;font-size:clamp(28px,4vw,40px);font-weight:800;margin:0 0 14px;}
+  .sec-title .accent{color:var(--orange);}
+  .sec-sub{text-align:center;color:var(--navy-soft);font-size:16px;max-width:620px;margin:0 auto 50px;}
+
+  /* ABOUT */
+  .about-text{max-width:760px;margin:0 auto 44px;font-size:17px;color:#3a4250;}
+  .about-text p{margin-bottom:18px;}
+  .about-text b{color:var(--navy);}
+  .about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:780px){.about-cards{grid-template-columns:1fr;}}
+  .acard{border:1px solid var(--line);border-radius:12px;padding:26px;background:#fff;}
+  .acard .icon{width:48px;height:48px;border-radius:10px;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;}
+  .acard h3{font-size:17px;margin:0 0 8px;}
+  .acard p{font-size:14px;color:var(--navy-soft);margin:0;}
+
+  /* IMPACT CASE STUDY */
+  .impact-tag{text-align:center;}
+  .impact-pill{display:inline-block;background:var(--orange);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:6px;margin-bottom:18px;}
+  .challenge-box{
+    background:var(--cream-2);border:1px solid var(--orange-soft);border-radius:14px;padding:36px;margin:36px 0;
+  }
+  .challenge-box h4{display:flex;align-items:center;gap:10px;font-size:19px;margin:0 0 16px;}
+  .challenge-box .ic{width:36px;height:36px;border-radius:8px;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;color:var(--orange);}
+  .challenge-box p{font-size:15.5px;color:#3a4250;margin-bottom:18px;}
+  .point-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media (max-width:680px){.point-grid{grid-template-columns:1fr;}}
+  .point{background:#fff;border-radius:8px;padding:14px 16px;font-size:14.5px;display:flex;gap:10px;align-items:flex-start;}
+  .point .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:7px;flex-shrink:0;}
+
+  .solution-box{background:var(--teal-soft);border:1px solid #cfe2df;border-radius:14px;padding:36px;}
+  .solution-box h4{display:flex;align-items:center;gap:10px;font-size:19px;margin:0 0 22px;}
+  .solution-box .ic{width:36px;height:36px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--teal);}
+  .sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:680px){.sol-grid{grid-template-columns:1fr;}}
+  .solcard{background:#fff;border-radius:10px;padding:20px;}
+  .solcard .ic{width:36px;height:36px;border-radius:8px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;color:var(--teal);margin-bottom:12px;}
+  .solcard h5{margin:0 0 6px;font-size:15.5px;}
+  .solcard p{margin:0;font-size:13.5px;color:var(--navy-soft);}
+
+  .metrics-title{text-align:center;font-size:20px;font-weight:700;margin:44px 0 22px;}
+  .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:680px){.metric-row{grid-template-columns:1fr;}}
+  .metric{border:1.5px solid var(--orange-soft);border-radius:12px;padding:26px;text-align:center;}
+  .metric .num{font-size:38px;font-weight:800;color:var(--orange);}
+  .metric .lbl{font-size:14px;color:var(--navy-soft);margin-top:4px;}
+
+  .doc-note{
+    margin-top:36px;border:1.5px dashed var(--line);border-radius:12px;padding:20px 24px;
+    font-size:14px;color:var(--navy-soft);background:#fff;
+  }
+  .doc-note b{color:var(--navy);}
+
+  /* KEY PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media (max-width:780px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{border:1.5px solid var(--line);border-radius:14px;padding:28px;background:#fff;}
+  .proj-card .tag{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
+  .proj-card h3{font-size:18px;margin:0 0 12px;}
+  .proj-card h5{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--navy-soft);margin:14px 0 6px;}
+  .proj-card ul{margin:0;padding-left:18px;font-size:14px;color:#3a4250;}
+  .proj-card li{margin-bottom:5px;}
+  .proj-card .outcome{font-size:14px;color:var(--teal);font-weight:600;margin-top:4px;}
+
+  /* ACHIEVEMENTS */
+  .ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:780px){.ach-grid{grid-template-columns:1fr;}}
+  .ach{border:1.5px solid var(--line);border-radius:12px;padding:24px;background:#fff;}
+  .ach.teal{border-color:#bcd9d4;}
+  .ach.orange{border-color:var(--orange-soft);}
+  .ach .ic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px;}
+  .ach.teal .ic{background:var(--teal-soft);color:var(--teal);}
+  .ach.orange .ic{background:var(--orange-soft);color:var(--orange);}
+  .ach.navy .ic{background:#eef0f3;color:var(--navy-soft);}
+  .ach h3{font-size:15.5px;margin:0 0 6px;}
+  .ach p{font-size:13.5px;color:var(--navy-soft);margin:0;}
+
+  /* SKILLS */
+  .skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media (max-width:880px){.skill-grid{grid-template-columns:repeat(2,1fr);}}
+  .skill{border:1px solid var(--line);border-radius:12px;padding:22px;background:#fff;text-align:center;}
+  .skill .ic{width:44px;height:44px;border-radius:10px;background:var(--orange-soft);color:var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:18px;}
+  .skill h4{font-size:14px;margin:0 0 12px;}
+  .bar{height:6px;border-radius:4px;background:#eee;overflow:hidden;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--orange));}
+
+  /* JOURNEY */
+  .job{border-left:3px solid var(--orange-soft);padding-left:24px;margin-bottom:6px;position:relative;}
+  .job:before{content:"";position:absolute;left:-7px;top:4px;width:11px;height:11px;border-radius:50%;background:var(--orange);}
+  .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;margin-bottom:6px;}
+  .job-title{font-weight:700;font-size:17px;}
+  .job-company{color:var(--navy-soft);font-size:14px;}
+  .job-dates{font-size:12.5px;color:var(--orange);font-weight:700;}
+  .job ul{margin:10px 0 0;padding-left:18px;font-size:14.5px;color:#3a4250;}
+  .job li{margin-bottom:7px;}
+
+  /* RECOGNITION */
+  .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:780px){.cert-grid{grid-template-columns:1fr;}}
+  .cert{border:1.5px solid var(--line);border-radius:12px;padding:22px;background:#fff;position:relative;}
+  .cert.a{border-color:var(--orange-soft);}
+  .cert.b{border-color:#bcd9d4;}
+  .cert .yr{position:absolute;top:18px;right:18px;background:var(--navy-soft);color:#fff;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:6px;}
+  .cert.a .yr{background:var(--orange);}
+  .cert.b .yr{background:var(--teal);}
+  .cert .em{font-size:24px;margin-bottom:14px;}
+  .cert h4{margin:0 0 4px;font-size:15.5px;}
+  .cert .acro{color:var(--orange);font-size:13px;font-weight:700;margin-bottom:6px;}
+  .cert .org{font-size:13px;color:var(--navy-soft);border-top:1px solid var(--line);padding-top:10px;margin-top:10px;}
+  .verified{font-size:12px;color:var(--teal);margin-top:8px;}
+
+  .edu-box{border:1px solid var(--line);border-radius:14px;padding:32px;margin-top:50px;background:#fff;}
+  .edu-box h3{text-align:center;font-size:22px;margin:0 0 26px;}
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media (max-width:680px){.edu-grid{grid-template-columns:1fr;}}
+  .edu-card{background:var(--cream-2);border-radius:10px;padding:18px 20px;}
+  .edu-card h5{margin:0 0 4px;font-size:14.5px;}
+  .edu-card p{margin:0 0 8px;font-size:13px;color:var(--navy-soft);}
+  .edu-card span{font-size:11.5px;background:#eee;padding:3px 9px;border-radius:5px;}
+  .award-box{margin-top:18px;background:linear-gradient(90deg,#fff8e8,#fff);border:1px solid #f0d997;border-radius:10px;padding:20px;display:flex;align-items:center;gap:16px;}
+  .award-box .ic{width:40px;height:40px;border-radius:10px;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .award-box h5{margin:0 0 2px;font-size:15.5px;}
+  .award-box p{margin:0;font-size:13px;color:var(--navy-soft);}
+
+  /* CONNECT */
+  .avail-box{
+    background:linear-gradient(90deg,var(--teal-soft),var(--orange-soft));
+    border:1px solid var(--line);border-radius:14px;padding:32px;text-align:center;margin-bottom:36px;
+  }
+  .avail-box h3{margin:0 0 18px;font-size:20px;}
+  .pill-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .av-pill{border:1.5px solid var(--teal);border-radius:999px;padding:9px 20px;font-size:14px;background:#fff;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:680px){.contact-grid{grid-template-columns:1fr;}}
+  .ccard{border:1.5px solid var(--line);border-radius:12px;padding:26px;background:#fff;}
+  .ccard.a{border-color:var(--orange);}
+  .ccard.b{border-color:var(--teal);}
+  .ccard .ic{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;}
+  .ccard.a .ic{background:var(--orange-soft);color:var(--orange);}
+  .ccard.b .ic{background:var(--teal-soft);color:var(--teal);}
+  .ccard h4{margin:0 0 6px;font-size:18px;}
+  .ccard p{margin:0 0 18px;font-size:14px;color:var(--navy-soft);}
+  .ccard a.cbtn{display:block;text-align:center;padding:12px;border-radius:8px;color:#fff;font-weight:700;font-size:14.5px;}
+  .ccard.a a.cbtn{background:var(--orange);}
+  .ccard.b a.cbtn{background:var(--navy-soft);}
+
+  footer{padding:30px 0;text-align:center;font-size:13px;color:var(--navy-soft);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Smruti <span>Naik</span></div>
+    <div class="nav-links">
+      <a href="#about" class="active">ABOUT</a>
+      <a href="#impact">IMPACT</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#achievements">ACHIEVEMENTS</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#journey">JOURNEY</a>
+      <a href="#recognition">RECOGNITION</a>
+      <a href="#connect">CONNECT</a>
+    </div>
+    <a href="#connect" class="hire-btn">WORK WITH ME</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="badge">Available for Full-Time Opportunities</div>
+    <h1>Smruti Pramod<br><span class="accent">Naik</span></h1>
+    <div class="role">Technical Project Manager</div>
+    <div class="focus">Healthcare Tech | Agile Delivery</div>
+    <div class="years"><b>4</b>Years Experience</div>
+    <div class="hero-ctas">
+      <a href="#journey" class="btn-primary">Explore My Work →</a>
+      <a href="#connect" class="btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">Who I Am</div>
+    <h2 class="sec-title">Driving <span class="accent">Healthcare Innovation</span> Through Agile Excellence</h2>
+    <div class="about-text">
+      <p>Results-oriented <b>Technical Project Manager</b> with <b>4 years of Agile delivery experience</b> across healthcare technology and cross-functional program management. Currently at <b>Fluent Health</b>, collaborating closely with engineering, QA, design, and business stakeholders to deliver healthcare technology initiatives within aggressive timelines.</p>
+      <p>Transitioned into the TPM role based on strong ownership and delivery excellence. Proven ability to lead cross-functional teams, deliver MVPs to beta markets, and drive alignment between product vision and engineering execution — operating as a fully AI-powered TPM using Claude and Claude Cowork to accelerate planning, tracking, and reporting.</p>
+    </div>
+    <div class="about-cards">
+      <div class="acard"><div class="icon">👥</div><h3>Cross-Functional Leadership</h3><p>Leading 20+ member teams across engineering, QA, and design</p></div>
+      <div class="acard"><div class="icon">🎯</div><h3>Healthcare Tech Focus</h3><p>Specialized in delivering healthcare technology initiatives</p></div>
+      <div class="acard"><div class="icon">⚡</div><h3>AI-Powered Delivery</h3><p>Using Claude &amp; Claude Cowork to run a fully AI-enabled TPM workflow</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="wrap">
+    <div class="impact-tag"><span class="impact-pill">Primary Impact</span></div>
+    <h2 class="sec-title">Transforming <span class="accent">Matrix Operations</span> at Fluent Health</h2>
+    <p class="sec-sub">Solved critical organizational challenges in a complex matrix structure managing multi-stream healthcare projects.</p>
+
+    <div class="challenge-box">
+      <h4><span class="ic">⚠</span> The Challenge</h4>
+      <p>Fluent Health operated with a matrix organizational structure lacking visibility into resource availability, project tracking, and team accountability. Manual feature distribution led to:</p>
+      <div class="point-grid">
+        <div class="point"><span class="dot"></span>Unclear resource bandwidth and availability</div>
+        <div class="point"><span class="dot"></span>Inconsistent project tracking and deliverable visibility</div>
+        <div class="point"><span class="dot"></span>Scattered responsibility and accountability</div>
+        <div class="point"><span class="dot"></span>Quality variability across teams</div>
+      </div>
+    </div>
+
+    <div class="solution-box">
+      <h4><span class="ic">✓</span> The Solution</h4>
+      <div class="sol-grid">
+        <div class="solcard">
+          <div class="ic">📊</div>
+          <h5>Milestone Progress Dashboard</h5>
+          <p>Created and maintained a dashboard tracking project progress milestone-by-milestone, giving leadership real-time visibility into delivery status across every workstream.</p>
+        </div>
+        <div class="solcard">
+          <div class="ic">🗂️</div>
+          <h5>TPM Project Tracker</h5>
+          <p>Built a project-specific tracker to monitor deliverables, owners, and timelines per initiative, replacing scattered manual tracking with one structured source of truth.</p>
+        </div>
+        <div class="solcard">
+          <div class="ic">👥</div>
+          <h5>Resource Bandwidth Management</h5>
+          <p>Date-based tracking to identify exact availability windows for each team member.</p>
+        </div>
+        <div class="solcard">
+          <div class="ic">🎯</div>
+          <h5>Squad Model Architecture</h5>
+          <p>Restructured teams into focused squads with clear module ownership.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics-title">📈 Measurable Impact</div>
+    <div class="metric-row">
+      <div class="metric"><div class="num">2,860+</div><div class="lbl">Issues tracked across 9 boards</div></div>
+      <div class="metric"><div class="num">40%</div><div class="lbl">Reduction in Delivery Delays</div></div>
+      <div class="metric"><div class="num">30%</div><div class="lbl">Planning Efficiency Improvement</div></div>
+    </div>
+
+    <div class="solution-box" style="margin-top:36px;">
+      <h4><span class="ic">📊</span> Live Reporting in Action</h4>
+      <div class="sol-grid">
+        <div class="solcard">
+          <div class="ic">🩺</div>
+          <h5>Milestone Health Report</h5>
+          <p>Weekly sprint-health report covering 2,860+ tracked issues across 9 boards (Android, iOS, Backend, QA, DevOps, React Native, Search). Surfaces at-risk milestones, planning hygiene gaps, and capacity bottlenecks for leadership review.</p>
+        </div>
+        <div class="solcard">
+          <div class="ic">🗂️</div>
+          <h5>Project-Specific Tracker</h5>
+          <p>Live tracker built for a 3-week feature initiative — breaking work into Backend, iOS, Android, and QA workstreams with task-level estimates, blockers, owners, and a critical-path milestone map updated daily.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-note">
+      📎 Full reports available on request — internal engineer-level detail has been kept out of this public summary for confidentiality.
+    </div>
+  </div>
+</section>
+
+<!-- KEY PROJECTS -->
+<section id="projects">
+  <div class="eyebrow">Hands-On Build</div>
+  <h2 class="sec-title">Key <span class="accent">Projects</span></h2>
+  <p class="sec-sub">Tooling and process I designed and built myself to run delivery — not just used, but configured from scratch.</p>
+  <div class="wrap">
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="tag">Process · GitHub</div>
+        <h3>End-to-End Project Management Setup in GitHub</h3>
+        <h5>Approach</h5>
+        <ul>
+          <li>Configured GitHub project management from scratch — Git workflow setup, branching conventions, and review process.</li>
+          <li>Set up Sprint and Kanban boards per team for parallel-track visibility.</li>
+          <li>Built resource tracking and feature-progress tracking directly into the workflow.</li>
+          <li>Tracked delivery sprint over sprint against committed scope.</li>
+        </ul>
+        <div class="outcome">→ Gave every team a single, consistent system for planning and tracking delivery.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="tag">AI Tooling · Claude CLI</div>
+        <h3>Real-Time Sprint Health &amp; Milestone Reporting</h3>
+        <h5>Approach</h5>
+        <ul>
+          <li>Tracked release milestones platform-wise to see exactly how far each was from completion.</li>
+          <li>Implemented a milestone tracker via Claude CLI, connected directly to the GitHub repo.</li>
+          <li>Generated real-time analysis of milestone completion, feeding directly into status reporting.</li>
+        </ul>
+        <div class="outcome">→ Replaced manual status chasing with live, always-current milestone visibility.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="tag">AI Tooling · Claude CLI</div>
+        <h3>Live Project Tracker per Feature</h3>
+        <h5>Approach</h5>
+        <ul>
+          <li>Built a live project tracker via Claude CLI for each feature in flight.</li>
+          <li>Tracked task completion, analyzed delays, and flagged critical phases.</li>
+          <li>Surfaced alerts, risks, and cross-team dependencies as they emerged.</li>
+        </ul>
+        <div class="outcome">→ Turned feature delivery risk from a retrospective finding into something caught early.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="tag">AI Tooling · Notion AI + Gemini</div>
+        <h3>AI-Assisted Meeting Notes &amp; Action Tracking</h3>
+        <h5>Approach</h5>
+        <ul>
+          <li>Recognized the conflict between facilitating technical discussion and taking notes in real time.</li>
+          <li>Introduced Notion AI and Gemini notes to transcribe meetings and surface action items automatically.</li>
+          <li>Freed up bandwidth to stay present and contribute to the technical conversation itself.</li>
+        </ul>
+        <div class="outcome">→ Fewer missed action items, and better-facilitated technical discussions.</div>
+      </div>
+
+      <div class="proj-card" style="grid-column:1 / -1;">
+        <div class="tag">Observability · Grafana</div>
+        <h3>Grafana Observability — Plan to Team Adoption</h3>
+        <h5>Approach</h5>
+        <ul>
+          <li>Owned the full path from planning the observability rollout, to evaluating and onboarding the tool, to getting the engineering team set up on it.</li>
+          <li>Worked closely with the tech team to help the team adapt Grafana into their regular routine, not just a one-off setup.</li>
+        </ul>
+        <div class="outcome">→ Took observability from zero to a fully adopted team habit in one month.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="eyebrow">Key Achievements</div>
+  <h2 class="sec-title">Delivering <span class="accent">Results</span> That Matter</h2>
+  <p class="sec-sub">Track record of transforming processes, leading teams, and driving measurable business impact.</p>
+  <div class="wrap">
+    <div class="ach-grid">
+      <div class="ach teal"><div class="ic">🚀</div><h3>Transitioned Entire Team to Squad Model</h3><p>Improving focus, accountability, and QA metrics across all streams</p></div>
+      <div class="ach orange"><div class="ic">🏅</div><h3>Established Comprehensive Project Tracking</h3><p>Reducing delivery delays by 40% through structured Git workflows and the TPM project tracker</p></div>
+      <div class="ach navy"><div class="ic">📊</div><h3>Built Milestone Progress Dashboard</h3><p>Giving leadership real-time visibility into delivery status across every project</p></div>
+      <div class="ach teal"><div class="ic">⚡</div><h3>Led Delivery of Multiple MVPs to Beta Markets</h3><p>Within aggressive timelines through effective cross-functional coordination</p></div>
+      <div class="ach orange"><div class="ic">🏅</div><h3>Implemented AI-Enabled Workflows</h3><p>Improving project planning efficiency by 30% using Claude AI</p></div>
+      <div class="ach navy"><div class="ic">🚀</div><h3>Maintained Low Critical Delivery Failures</h3><p>In complex matrix organizational structure through rigorous tracking</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="eyebrow">Capabilities</div>
+  <h2 class="sec-title">Skills That <span class="accent">Drive Success</span></h2>
+  <p class="sec-sub">A comprehensive toolkit spanning project management, agile methodologies, and technical expertise.</p>
+  <div class="wrap">
+    <div class="skill-grid">
+      <div class="skill"><div class="ic">🗂️</div><h4>Project Management</h4><div class="bar"><i style="width:92%"></i></div></div>
+      <div class="skill"><div class="ic">🔗</div><h4>Agile/Scrum</h4><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="ic">👥</div><h4>Cross-functional Leadership</h4><div class="bar"><i style="width:88%"></i></div></div>
+      <div class="skill"><div class="ic">🎯</div><h4>Resource Planning</h4><div class="bar"><i style="width:85%"></i></div></div>
+      <div class="skill"><div class="ic">🩺</div><h4>Healthcare Technology</h4><div class="bar"><i style="width:84%"></i></div></div>
+      <div class="skill"><div class="ic">🌿</div><h4>Git Workflows</h4><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill"><div class="ic">✅</div><h4>Backlog Management</h4><div class="bar"><i style="width:88%"></i></div></div>
+      <div class="skill"><div class="ic">💬</div><h4>Stakeholder Communication</h4><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="ic">📊</div><h4>Dashboard &amp; Reporting</h4><div class="bar"><i style="width:86%"></i></div></div>
+      <div class="skill"><div class="ic">☁️</div><h4>AI-Enabled Processes</h4><div class="bar"><i style="width:85%"></i></div></div>
+      <div class="skill"><div class="ic">🗃️</div><h4>MVP Delivery</h4><div class="bar"><i style="width:87%"></i></div></div>
+      <div class="skill"><div class="ic">📄</div><h4>Team Architecture</h4><div class="bar"><i style="width:82%"></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="eyebrow">Career Path</div>
+  <h2 class="sec-title">My <span class="accent">Journey</span></h2>
+  <p class="sec-sub">Technical Project Management experience, end to end.</p>
+  <div class="wrap">
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-title">Technical Project Manager</span> <span class="job-company">— Fluent Health, Healthcare Startup</span></div>
+        <div class="job-dates">Aug 2025 – Present</div>
+      </div>
+      <ul>
+        <li>Own end-to-end delivery of a healthcare MVP in a regulated FHIR R4/EMR environment, leading a 20+ member cross-functional team across concurrent projects.</li>
+        <li>Created and maintained a milestone-wise progress dashboard, giving leadership real-time visibility into delivery status across every workstream.</li>
+        <li>Built a TPM project tracker specific to each project to monitor deliverables, owners, and timelines in one structured source of truth.</li>
+        <li>Drive sprint predictability by facilitating all Scrum ceremonies and reporting velocity, burndown, and quality metrics to senior stakeholders.</li>
+        <li>Reduce delivery risk through continuous risk analysis, early impediment removal, and proactive mitigation.</li>
+        <li>Cut documentation and reporting overhead 40% by building AI-assisted workflows (Claude, Claude Cowork, Notion AI).</li>
+        <li>Restructured teams into a focused Squad Model with clear module ownership, improving accountability and quality metrics across streams.</li>
+        <li>Implemented Grafana for distributed tracing and real-time production monitoring, establishing full system observability.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-title">Senior QA Engineer &amp; Project Coordinator</span> <span class="job-company">— CeX Webuy Entertainment Pvt. Ltd.</span></div>
+        <div class="job-dates">2018 – 2020</div>
+      </div>
+      <ul>
+        <li>Owned end-to-end mobile app QA for iOS and Android applications, spanning feature testing through deployment and release management.</li>
+        <li>Worked closely with senior delivery leaders to improve Agile processes and team collaboration, assisting in release planning, dependency tracking, and production deployment activities.</li>
+        <li>Prepared sprint reports and status updates for leadership; maintained Jira boards and monitored sprint health to ensure backlog readiness ahead of Sprint Planning, Backlog Grooming, and Retrospectives.</li>
+        <li>Coordinated with Engineering, QA, Product, and Design teams to track sprint progress and resolve delivery blockers, partnering with Project Managers and Product Owners across multiple cross-functional teams.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition">
+  <div class="eyebrow">Recognition &amp; Credentials</div>
+  <h2 class="sec-title">Certified <span class="accent">Excellence</span></h2>
+  <p class="sec-sub">Industry-recognized certifications demonstrating commitment to professional growth and expertise.</p>
+  <div class="wrap">
+    <div class="cert-grid">
+      <div class="cert a"><span class="yr">2021</span><div class="em">🎯</div><h4>Certified Scrum Product Owner</h4><div class="acro">CSPO®</div><div class="org">Scrum Alliance</div><div class="verified">✓ Verified</div></div>
+      <div class="cert b"><span class="yr">2020</span><div class="em">🥇</div><h4>Certified Scrum Master</h4><div class="acro">CSM®</div><div class="org">Scrum Alliance</div><div class="verified">✓ Verified</div></div>
+      <div class="cert"><span class="yr" style="background:#5b6776;">2018</span><div class="em">✔️</div><h4>ISTQB Certified Tester</h4><div class="acro">ISTQB® Foundation</div><div class="org">ISTQB</div><div class="verified">✓ Verified</div></div>
+      <div class="cert a"><span class="yr">2026</span><div class="em">📊</div><h4>Google Project Management</h4><div class="acro">Foundation Certificate</div><div class="org">Google</div><div class="verified">✓ Verified</div></div>
+      <div class="cert b"><span class="yr">2026</span><div class="em">🤖</div><h4>Anthropic Claude 101</h4><div class="acro">AI Certification</div><div class="org">Anthropic</div><div class="verified">✓ Verified</div></div>
+      <div class="cert"><span class="yr" style="background:#5b6776;">2023</span><div class="em">☁️</div><h4>AWS Essentials</h4><div class="acro">Cloud Fundamentals</div><div class="org">Udemy</div><div class="verified">✓ Verified</div></div>
+    </div>
+
+    <div class="edu-box">
+      <h3>🎓 Education</h3>
+      <div class="edu-grid">
+        <div class="edu-card"><h5>B.E. in Information Technology</h5><p>Mumbai University</p><span>2014</span></div>
+        <div class="edu-card"><h5>Diploma in Information Technology</h5><p>Mumbai University</p><span>2014</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect" style="border-bottom:none;">
+  <div class="eyebrow">Let's Connect</div>
+  <h2 class="sec-title">Ready to <span class="accent">Collaborate?</span></h2>
+  <p class="sec-sub">I'm available for roles where quality is taken seriously. Let's discuss how I can contribute to your team's success.</p>
+  <div class="wrap">
+    <div class="avail-box">
+      <h3>Currently Available For</h3>
+      <div class="pill-row">
+        <div class="av-pill">Full-time positions</div>
+        <div class="av-pill">Contract opportunities</div>
+        <div class="av-pill">Remote work</div>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="ccard a">
+        <div class="ic">✉️</div>
+        <h4>Email</h4>
+        <p>naiksmruti2@gmail.com</p>
+        <a class="cbtn" href="mailto:naiksmruti2@gmail.com">Send Email →</a>
+      </div>
+      <div class="ccard b">
+        <div class="ic">in</div>
+        <h4>LinkedIn</h4>
+        <p>linkedin.com/in/smruti-naik</p>
+        <a class="cbtn" href="https://www.linkedin.com/in/smruti-naik" target="_blank" rel="noopener">View Profile →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© Smruti Naik — Technical Project Manager Portfolio</footer>
+
+</body>
+</html>
